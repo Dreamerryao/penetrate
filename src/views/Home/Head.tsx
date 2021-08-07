@@ -1,5 +1,5 @@
 import TransitionImg from "../../components/TransitionImg";
-import test from "../../assets/icon.png";
+import icon from "../../assets/icon.png";
 import { useEffect } from "react";
 const Head = () => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const Head = () => {
   }, []);
   return (
     <div className="head-container home-container reveal-from-top">
-      <TransitionImg src={test} className="head-icon"></TransitionImg>
+      <TransitionImg src={icon} className="head-icon"></TransitionImg>
       <div className="wrapper">
         <span>或许你对</span>
         <div id="mask" className="mask">

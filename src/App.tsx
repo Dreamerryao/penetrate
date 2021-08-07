@@ -3,6 +3,7 @@ import { useLocation, Route, Switch } from "react-router-dom";
 import ScrollReveal from "./utils/ScrollReveal";
 // Views
 import Home from "./views/Home";
+import Quiz from "./views/Quiz";
 import { ChildProps } from "./utils/ScrollReveal";
 
 const App = () => {
@@ -19,6 +20,9 @@ const App = () => {
       <Switch>
         <Route exact={true} path="/">
           <Home />
+        </Route>
+        <Route exact={true} path="/quiz">
+          <Quiz />
         </Route>
       </Switch>
     </ScrollReveal>
