@@ -55,6 +55,7 @@
     "@types/history": "^4.7.9",
     "@types/react-router-dom": "^5.1.8",
     "lint-staged": "^10.0.7",
-    "prettier": "^2.2.0"
+    "prettier": "^2.2.0",
+    "yorkie": "^2.0.0"
   }
 }
