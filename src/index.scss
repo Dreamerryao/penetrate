@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+$scroll-reveal--transition-duration: 0.8s;
+$scroll-reveal--transition-timing: cubic-bezier(0.39, 0.575, 0.565, 1);
+$scroll-reveal--from-top-amount: -10px;
+$scroll-reveal--from-bottom-amount: 10px;
+$scroll-reveal--from-left-amount: -10px;
+$scroll-reveal--from-right-amount: 10px;
+$scroll-reveal--scale-up-amount: 0.95;
+$scroll-reveal--scale-down-amount: 1.05;
+$scroll-reveal--rotate-from-left-amount: -45deg;
+$scroll-reveal--rotate-from-right-amount: 45deg;
+
+.has-animations {
+  [class*="reveal-"] {
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+
+  .reveal-from-top {
+    transform: translateY($scroll-reveal--from-top-amount);
+  }
+
+  .reveal-from-bottom {
+    transform: translateY($scroll-reveal--from-bottom-amount);
+  }
+
+  .reveal-from-left {
+    transform: translateX($scroll-reveal--from-left-amount);
+  }
+
+  .reveal-from-right {
+    transform: translateX($scroll-reveal--from-right-amount);
+  }
+
+  .reveal-scale-up {
+    transform: scale($scroll-reveal--scale-up-amount);
+  }
+
+  .reveal-scale-down {
+    transform: scale($scroll-reveal--scale-down-amount);
+  }
+
+  .reveal-rotate-from-left {
+    transform: perspective(1000px) rotateY($scroll-reveal--rotate-from-left-amount);
+  }
+
+  .reveal-rotate-from-right {
+    transform: perspective(1000px) rotateY($scroll-reveal--rotate-from-right-amount);
+  }
+
+  &.is-loaded {
+    [class*="reveal-"] {
+      transition: opacity $scroll-reveal--transition-duration $scroll-reveal--transition-timing,
+        transform $scroll-reveal--transition-duration $scroll-reveal--transition-timing;
+
+      &.is-revealed {
+        opacity: 1;
+        transform: translate(0);
+      }
+    }
+  }
+}
+
+.container {
+  max-width: 1128px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 481px){
+      padding-left: 24px;
+      padding-right: 24px;
+  }
+}
