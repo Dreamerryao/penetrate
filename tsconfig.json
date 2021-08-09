@@ -1,5 +1,4 @@
 {
-  // cra会自动加上 allowJs = true ，并将 alias 配置删除
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

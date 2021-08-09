@@ -1,0 +1,46 @@
+import { useMemo, useState } from "react";
+import ProgressBar from "../../components/ProgressBar";
+import { details, ID_LIST } from "../../constants/entry";
+import "./index.scss";
+interface SelectQuizProps {
+  id: ID_LIST;
+}
+const SelectQuiz = ({ id }: SelectQuizProps) => {
+  const quizDetails: Array<{
+    title: string;
+    options: string[];
+  }> = useMemo(() => {
+    return details[id].topics;
+  }, [id]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentScore, setCurrentScore] = useState<number[]>(
+    Array(quizDetails.length).fill(0)
+  );
+
+  const handleChoose = (cur: number, option: number) => {
+    setCurrentScore((x) => {
+      const a = [...x];
+      a[cur] = (option + 1) * 100;
+      return a;
+    });
+    if (cur !== quizDetails.length - 1) {
+      setCurrentIndex(cur + 1);
+    }
+  };
+
+  return (
+    <div className="relative-container">
+      <ProgressBar current={currentIndex} total={quizDetails.length} />
+      <div className="quiz-card">
+        {quizDetails[currentIndex].title}
+        {quizDetails[currentIndex].options.map((option, i) => {
+          return (
+            <div onClick={() => handleChoose(currentIndex, i)}>{option}</div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+export default SelectQuiz;

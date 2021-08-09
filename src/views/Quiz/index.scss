@@ -1,0 +1,34 @@
+.relative-container {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    position: relative;
+}
+
+.quiz-card {
+    width: calc(100% - 32px);
+    margin: 16px;
+    margin-top: 36px;
+    padding: 16px;
+    padding-bottom: 36px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+
+
+    div {
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        border-radius: 4px;
+        margin-top: 16px;
+        padding: 8px;
+        width: 100%;
+        font-weight: 400;
+        color: #8790A7;
+        cursor: pointer;
+    }
+}

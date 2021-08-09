@@ -1,5 +1,6 @@
 import type { CardLayoutProps } from "../layouts/CardLayout";
 import test from "../assets/test.jpg";
+import colorTest from "./colorTest";
 
 enum ID_LIST {
   COLOR_TEST = "color_test",
@@ -14,4 +15,8 @@ const entryArray: CardLayoutProps[] = [
   },
 ];
 
-export { entryArray, ID_LIST };
+const details: Record<ID_LIST, any> = {
+  color_test: colorTest,
+};
+
+export { entryArray, ID_LIST, details };
