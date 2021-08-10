@@ -1,7 +1,7 @@
 import styles from "./index.module.less";
 import Head from "./Head";
 import Body from "./Body";
-import Footer from "../../components/Footer";
+import Footer from "@/components/Footer";
 import cn from "classnames";
 const Home = () => {
   return (

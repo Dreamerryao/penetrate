@@ -1,6 +1,7 @@
-import { ID_LIST } from "../constants/entry";
+import { ID_LIST } from "@/constants/entry";
 
 const computeResult = (id: ID_LIST, score: number[]) => {
+  console.log("score", score);
   switch (id) {
     case "color_test":
       return colorTestComputeResult(id, score);

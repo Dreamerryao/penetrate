@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
-import ProgressBar from "../../components/ProgressBar";
-import { details, ID_LIST } from "../../constants/entry";
+import ProgressBar from "@/components/ProgressBar";
+import { details, ID_LIST } from "@/constants/entry";
 import styles from "./index.module.less";
 
-import computeResult from "../../utils/computeResult";
+import computeResult from "@/utils/computeResult";
 interface SelectQuizProps {
   id: ID_LIST;
 }
@@ -38,7 +38,7 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
 
   const handleResult = () => {
     const rid = computeResult(id, currentScore);
-    console.log("will push to result");
+    history.push(`/result?id=${id}&res=${rid}`);
   };
 
   return (

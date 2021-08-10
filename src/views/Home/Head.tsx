@@ -1,6 +1,6 @@
 import styles from "./index.module.less";
-import TransitionImg from "../../components/TransitionImg";
-import icon from "../../assets/icon.png";
+import TransitionImg from "@/components/TransitionImg";
+import icon from "@/assets/icon.png";
 import { useEffect } from "react";
 import cn from "classnames";
 const Head = () => {

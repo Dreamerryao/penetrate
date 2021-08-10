@@ -1,6 +1,6 @@
 import styles from "./index.module.less";
 import type { ReactNode } from "react";
-import NavBar from "../../components/NavBar";
+import NavBar from "@/components/NavBar";
 import { useHistory, useLocation } from "react-router-dom";
 import Footer from "src/components/Footer";
 import cn from "classnames";
