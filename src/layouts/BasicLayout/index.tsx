@@ -1,8 +1,9 @@
-import "./index.scss";
+import styles from "./index.module.less";
 import type { ReactNode } from "react";
 import NavBar from "../../components/NavBar";
 import { useHistory, useLocation } from "react-router-dom";
 import Footer from "src/components/Footer";
+import cn from "classnames";
 interface BasicLayoutPropss {
   children?: ReactNode;
 }
@@ -15,7 +16,7 @@ const BasicLayout = ({ children }: BasicLayoutPropss) => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   return (
-    <div className="container basic-layout-container">
+    <div className={cn("container", styles.container)}>
       <NavBar handleClick={handleClick} name={params.get("name") || ""} />
       {children}
       <Footer />

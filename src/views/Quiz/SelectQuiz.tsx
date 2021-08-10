@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
 import { details, ID_LIST } from "../../constants/entry";
-import "./index.scss";
+import styles from "./index.module.less";
 
 import computeResult from "../../utils/computeResult";
 interface SelectQuizProps {
@@ -26,7 +26,7 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
   const handleChoose = (cur: number, option: number) => {
     setCurrentScore((x) => {
       const a = [...x];
-      a[cur] = Math.pow(100, option);
+      a[cur] = Math.pow(100, option * 2);
       return a;
     });
     if (cur !== quizDetails.length - 1) {
@@ -42,9 +42,9 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
   };
 
   return (
-    <div className="relative-container">
+    <div className={styles.relativeContainer}>
       <ProgressBar current={currentIndex} total={quizDetails.length} />
-      <div className="quiz-card">
+      <div className={styles.quizCard}>
         {quizDetails[currentIndex].title}
         {quizDetails[currentIndex].options.map((option, i) => {
           return (
@@ -54,7 +54,7 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
           );
         })}
       </div>
-      <div className="quiz-bottom-area">
+      <div className={styles.bottomArea}>
         {currentIndex !== 0 && (
           <button onClick={() => setCurrentIndex((x) => x - 1)}>上一题</button>
         )}

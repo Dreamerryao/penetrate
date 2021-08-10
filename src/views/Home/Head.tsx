@@ -1,6 +1,8 @@
+import styles from "./index.module.less";
 import TransitionImg from "../../components/TransitionImg";
 import icon from "../../assets/icon.png";
 import { useEffect } from "react";
+import cn from "classnames";
 const Head = () => {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,11 +23,17 @@ const Head = () => {
     };
   }, []);
   return (
-    <div className="head-container home-container reveal-from-top">
-      <TransitionImg src={icon} className="head-icon"></TransitionImg>
-      <div className="wrapper">
+    <div
+      className={cn(
+        styles.headContainer,
+        styles.homeContainer,
+        "reveal-from-top"
+      )}
+    >
+      <TransitionImg src={icon} className={styles.headIcon}></TransitionImg>
+      <div className={styles.wrapper}>
         <span>或许你对</span>
-        <div id="mask" className="mask">
+        <div id="mask" className={styles.mask}>
           <span data-up>颜色性格测试</span>
           <span data-show>花里胡哨的测试</span>
           <span>...</span>

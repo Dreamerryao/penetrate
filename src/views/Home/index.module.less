@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.headContainer {
+  width: 100vw;
+  text-align: center;
+  background-color: #f5f6f8;
+  position: relative;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    padding: 60px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  span {
+    font-size: 40px;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: #1d1d1f;
+  }
+
+  > span {
+    margin: 16px;
+  }
+}
+
+.headIcon {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  margin-right: 32px;
+
+  @media (max-width: 767px) {
+    margin-right: 0;
+    display: none;
+  }
+}
+
+.wrapper {
+  height: auto;
+  text-align: start;
+}
+
+.mask {
+  position: relative;
+  width: auto;
+  text-align: center;
+  height: 48px;
+  margin: 6px 0;
+  min-width: 300px;
+  overflow: hidden;
+  font-size: 40px;
+  line-height: 1.2;
+
+  span {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    text-align: center;
+    top: 48px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-repeat: no-repeat;
+    color: transparent;
+  }
+
+  span[data-show] {
+    transform: translateY(-100%);
+    transition: 0.5s transform ease-in-out;
+  }
+
+  span[data-up] {
+    transform: translateY(-200%);
+    transition: 0.5s transform ease-in-out;
+  }
+}
+
+.mask span:nth-child(1) {
+  background-image: linear-gradient(45deg, #0ecffe 50%, #07a6f1);
+}
+
+.mask span:nth-child(2) {
+  background-image: linear-gradient(45deg, #18e198 50%, #0ec15d);
+}
+
+.mask span:nth-child(3) {
+  background-image: linear-gradient(45deg, #8a7cfb 50%, #633e9c);
+}
+
+.mask span:nth-child(4) {
+  background-image: linear-gradient(45deg, #fa7671 50%, #f45f7f);
+}
+
+.bodyContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px 8px;
+}

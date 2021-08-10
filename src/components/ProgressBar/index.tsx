@@ -1,4 +1,4 @@
-import "./index.scss";
+import styles from "./index.module.less";
 
 interface ProgressProps {
   current: number;
@@ -7,15 +7,15 @@ interface ProgressProps {
 
 const ProgressBar = ({ current, total }: ProgressProps) => {
   return (
-    <div className="progress-container">
-      <div className="linear-outer">
+    <div className={styles.container}>
+      <div className={styles.outer}>
         <div
-          className="linear-inner"
+          className={styles.inner}
           style={{ width: `${((current + 1) / total) * 100}%` }}
         />
       </div>
-      <div className="display-process">
-        <span>{current + 1}</span>/{total}
+      <div className={styles.display}>
+        <span>{current + 1}</span>/<span className={styles.post}>{total}</span>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { ReactComponent as BackIcon } from "../../assets/back.svg";
-import "./index.scss";
+import styles from "./index.module.less";
 
 interface NavBarProps {
   handleClick?: () => void;
@@ -8,8 +8,8 @@ interface NavBarProps {
 
 const NavBar = ({ handleClick, name }: NavBarProps) => {
   return (
-    <div className="nav-bar-container">
-      <BackIcon className="icon" onClick={handleClick} />
+    <div className={styles.navBarContainer}>
+      <BackIcon className={styles.icon} onClick={handleClick} />
       <span>{name}</span>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import type { ImgHTMLAttributes } from "react";
 import classNames from "classnames";
-
+import styles from "./index.module.less";
 export interface TransitionImgProps
   extends ImgHTMLAttributes<HTMLImageElement> {
   /** 容器 className */
@@ -55,7 +55,7 @@ const TransitionImg = ({
     <img
       {...props}
       ref={image}
-      className={classNames("transition-img", className)}
+      className={classNames(styles.img, className)}
       src={src}
       width={width}
       height={height}
