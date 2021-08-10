@@ -7,7 +7,7 @@ const Quiz = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   return (
-    <BasicLayout>
+    <BasicLayout name={params.get("name") || ""}>
       {details[(params.get("id") || "color_test") as ID_LIST].type ===
       "select" ? (
         <SelectQuiz id={(params.get("id") || "color_test") as ID_LIST} />

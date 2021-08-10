@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 import { useLocation, Route, Switch } from "react-router-dom";
-import ScrollReveal from "./utils/ScrollReveal";
+import ScrollReveal from "@/utils/ScrollReveal";
 // Views
-import Home from "./views/Home";
-import Quiz from "./views/Quiz";
-import { ChildProps } from "./utils/ScrollReveal";
+import Home from "@/views/Home";
+import Quiz from "@/views/Quiz";
+import Result from "@/views/Result";
+import { ChildProps } from "@/utils/ScrollReveal";
 
 const App = () => {
   const childRef = useRef<ChildProps>(null);
@@ -23,6 +24,9 @@ const App = () => {
         </Route>
         <Route exact={true} path="/quiz">
           <Quiz />
+        </Route>
+        <Route exact={true} path="/result">
+          <Result />
         </Route>
       </Switch>
     </ScrollReveal>

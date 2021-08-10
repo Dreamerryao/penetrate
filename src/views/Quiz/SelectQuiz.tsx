@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import ProgressBar from "@/components/ProgressBar";
 import { details, ID_LIST } from "@/constants/entry";
 import styles from "./index.module.less";
+import cn from "classnames";
 
 import computeResult from "@/utils/computeResult";
 interface SelectQuizProps {
@@ -26,13 +27,13 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
   const handleChoose = (cur: number, option: number) => {
     setCurrentScore((x) => {
       const a = [...x];
-      a[cur] = Math.pow(100, option * 2);
+      a[cur] = Math.pow(100, option);
       return a;
     });
     if (cur !== quizDetails.length - 1) {
-      setCurrentIndex((cur) => cur + 1);
+      window.setTimeout(() => setCurrentIndex((cur) => cur + 1), 300);
     } else {
-      setShowResult(true);
+      window.setTimeout(() => setShowResult(true), 300);
     }
   };
 
@@ -48,7 +49,14 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
         {quizDetails[currentIndex].title}
         {quizDetails[currentIndex].options.map((option, i) => {
           return (
-            <div onClick={() => handleChoose(currentIndex, i)} key={i}>
+            <div
+              onClick={() => handleChoose(currentIndex, i)}
+              key={i}
+              className={cn(styles.card, {
+                [styles.active]:
+                  currentScore[currentIndex] === Math.pow(100, i),
+              })}
+            >
               {option}
             </div>
           );
@@ -56,9 +64,18 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
       </div>
       <div className={styles.bottomArea}>
         {currentIndex !== 0 && (
-          <button onClick={() => setCurrentIndex((x) => x - 1)}>上一题</button>
+          <button
+            className={styles.button}
+            onClick={() => setCurrentIndex((x) => x - 1)}
+          >
+            上一题
+          </button>
         )}
-        {showResult && <button onClick={handleResult}>查看结果</button>}
+        {showResult && (
+          <button className={styles.submit} onClick={handleResult}>
+            查看结果
+          </button>
+        )}
       </div>
     </div>
   );
