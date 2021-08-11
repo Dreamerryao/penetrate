@@ -19,13 +19,13 @@ const App = () => {
   return (
     <ScrollReveal ref={childRef}>
       <Switch>
-        <Route exact={true} path="/">
+        <Route exact={true} path="/penetrate/">
           <Home />
         </Route>
-        <Route exact={true} path="/quiz">
+        <Route exact={true} path="/penetrate/quiz">
           <Quiz />
         </Route>
-        <Route exact={true} path="/result">
+        <Route exact={true} path="/penetrate/result">
           <Result />
         </Route>
       </Switch>

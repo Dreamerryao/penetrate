@@ -71,7 +71,7 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
 
   const handleResult = () => {
     const rid = computeResult(id, currentScore);
-    history.push(`/result?id=${id}&res=${rid}`);
+    history.push(`/penetrate/result?id=${id}&res=${rid}`);
   };
 
   return (

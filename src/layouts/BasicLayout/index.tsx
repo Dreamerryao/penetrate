@@ -11,7 +11,7 @@ interface BasicLayoutPropss {
 const BasicLayout = ({ children, name }: BasicLayoutPropss) => {
   const history = useHistory();
   const handleClick = () => {
-    history.replace("/");
+    history.replace("/penetrate");
   };
   return (
     <div className={cn("container", styles.container)}>

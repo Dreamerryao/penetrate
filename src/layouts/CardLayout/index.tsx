@@ -22,7 +22,7 @@ const CardLayout = ({
 }: CardLayoutProps) => {
   const history = useHistory();
   const handleClick = useCallback(() => {
-    history.replace(`/quiz?id=${id}&name=${title}`);
+    history.replace(`/penetrate/quiz?id=${id}&name=${title}`);
   }, [history, id, title]);
   return (
     <div
