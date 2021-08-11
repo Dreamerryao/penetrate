@@ -55,10 +55,10 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
       return a;
     });
     if (cur !== quizDetails.length - 1 && !showResult) {
-      window.setTimeout(() => {
-        setCurrentIndex((cur) => cur + 1);
-        randomColor();
-      }, 400);
+      // window.setTimeout(() => {
+      setCurrentIndex((cur) => cur + 1);
+      randomColor();
+      // }, 400);
     } else if (showResult) {
       //nothing
     } else {
@@ -83,7 +83,9 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
           background: `linear-gradient(${bg.angle}deg, ${bg.from}, ${bg.to})`,
         }}
       >
-        <span className={styles.title}>{quizDetails[currentIndex].title}</span>
+        <span className={styles.title}>
+          {quizDetails?.[currentIndex].title ?? ""}
+        </span>
         {quizDetails[currentIndex].options.map((option, i) => {
           return (
             <div
