@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ProgressBar from "@/components/ProgressBar";
 import { details, ID_LIST } from "@/constants/entry";
@@ -24,16 +24,48 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
   );
   const [showResult, setShowResult] = useState(false);
 
+  const [bg, setBackground] = useState<{
+    angle: number;
+    from: string;
+    to: string;
+  }>({
+    angle: 0,
+    from: "rgba(255,255,255,0.2)",
+    to: "rgba(255,255,255,0.2)",
+  });
+
+  const randomColor = () =>
+    setBackground({
+      angle: Math.round(Math.random() * 360),
+      from: `rgba(${Math.round((Math.random() * 255 + 510) / 3)},${Math.round(
+        (Math.random() * 255 + 510) / 3
+      )},${Math.round((Math.random() * 255 + 510) / 3)},0.1)`,
+      to: `rgba(${Math.round((Math.random() * 255 + 510) / 3)},${Math.round(
+        (Math.random() * 255 + 510) / 3
+      )},${Math.round((Math.random() * 255 + 510) / 3)},0.1)`,
+    });
+  useEffect(() => {
+    randomColor();
+  }, []);
+
   const handleChoose = (cur: number, option: number) => {
     setCurrentScore((x) => {
       const a = [...x];
       a[cur] = Math.pow(100, option);
       return a;
     });
-    if (cur !== quizDetails.length - 1) {
-      window.setTimeout(() => setCurrentIndex((cur) => cur + 1), 300);
+    if (cur !== quizDetails.length - 1 && !showResult) {
+      window.setTimeout(() => {
+        setCurrentIndex((cur) => cur + 1);
+        randomColor();
+      }, 400);
+    } else if (showResult) {
+      //nothing
     } else {
-      window.setTimeout(() => setShowResult(true), 300);
+      window.setTimeout(() => {
+        setShowResult(true);
+        // randomColor();
+      }, 400);
     }
   };
 
@@ -45,8 +77,13 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
   return (
     <div className={styles.relativeContainer}>
       <ProgressBar current={currentIndex} total={quizDetails.length} />
-      <div className={styles.quizCard}>
-        {quizDetails[currentIndex].title}
+      <div
+        className={styles.quizCard}
+        style={{
+          background: `linear-gradient(${bg.angle}deg, ${bg.from}, ${bg.to})`,
+        }}
+      >
+        <span className={styles.title}>{quizDetails[currentIndex].title}</span>
         {quizDetails[currentIndex].options.map((option, i) => {
           return (
             <div
@@ -66,9 +103,23 @@ const SelectQuiz = ({ id }: SelectQuizProps) => {
         {currentIndex !== 0 && (
           <button
             className={styles.button}
-            onClick={() => setCurrentIndex((x) => x - 1)}
+            onClick={() => {
+              setCurrentIndex((x) => x - 1);
+              randomColor();
+            }}
           >
             上一题
+          </button>
+        )}
+        {showResult && currentIndex !== quizDetails.length - 1 && (
+          <button
+            className={styles.button}
+            onClick={() => {
+              setCurrentIndex((x) => x + 1);
+              randomColor();
+            }}
+          >
+            下一题
           </button>
         )}
         {showResult && (
